@@ -1,3 +1,4 @@
 PyMuPDF==1.23.20
 Flask==3.0.1
 supabase==2.3.4
+waitress
