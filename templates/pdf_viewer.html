@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PDF Viewer</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pdf_viewer.css') }}">
+</head>
+<body>
+        <!-- Custom Alert Modal -->
+    <div id="customAlert" class="custom-alert-modal" style="display:none;">
+        <div class="custom-alert-content">
+        <span class="custom-alert-close" onclick="closeAlert()">❌</span>
+        <p id="alertMessage">This is a custom alert!</p>
+        <button class="custom-alert-button" onclick="closeAlert()">OK</button>
+        </div>
+    </div>
+    
+    <nav>
+        <div class="container-nav">
+            <div class="navbar-brand">📄 Edit PDFs</div>
+            <div class="navbar-nav">
+                <a href="/">Upload PDFs</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div id="pdfNameHeader" class="pdf-name-header"></div>
+        <div class="header-inputs" style="margin-top: 20px;">
+            <input type="text" id="examName" placeholder="Enter Exam Name" style="margin-right: 10px;">
+            <input type="text" id="quizName" placeholder="Quiz Name">
+        </div>
+        <div id="pdfDataContainer">
+            <!-- Questions will be inserted here by JavaScript -->
+        </div>
+        <div class="navigation">
+            <button onclick="prevPDF()" style="font-size: 20px;">⇐</button>
+            <span id="currentIndex">1</span> / <span id="totalIndex">0</span>
+            <button onclick="nextPDF()" style="font-size: 20px;">⇒</button>
+            <button id="importToSupabase" onclick="importToSupabase()">Import to Supabase</button>
+        </div>
+    </div>
+    
+    <script>
+        var currentIndex = 0;
+        var data = {{ data| tojson }};
+        var edits = {};
+        var deletions = { questions: [], choices: [] };
+        var additions = [];
+        document.getElementById('totalIndex').textContent = data.length;
+    </script>
+    <script src="{{ url_for('static', filename='js/pdf_viewer.js') }}"></script>
+</body>
+</html>

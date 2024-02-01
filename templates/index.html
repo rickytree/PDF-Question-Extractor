@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PDF Extractor</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body>
+    <h1>PDF Question Extractor</h1>
+    <form action="/view" method="post" enctype="multipart/form-data">
+        <label for="pdfFiles">Select PDFs</label><br>
+        <input type="file" name="pdfFiles" multiple><br><br>
+        <input type="submit" value="Upload">
+    </form>
+</body>
+</html>

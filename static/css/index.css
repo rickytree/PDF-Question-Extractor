@@ -1,0 +1,66 @@
+
+
+/* Upload index.html styles */
+
+body {
+    background-color: #f0f4f8; 
+    font-family: 'Arial', sans-serif; /* A clean and friendly font */
+    text-align: center; /* Centering everything */
+    /* margin-top: 20px; */
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-weight: bold;
+}
+
+/* Style the form for a modern look */
+form {
+    background-color: #ffffff;
+    padding: 40px; /* Increase padding for more space */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 340px; /* Adjust as needed */
+    margin-top: 2em; /* Add space at the top */
+}
+
+/* Style the input and label */
+label, input[type='submit'] {
+    display: block; /* Elements take the full width */
+    margin: 20px auto;
+}
+
+input[type='file'] {
+    border: 1px solid #ddd;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+input[type='submit'] {
+    background-color: #38b000; /* Soft green color */
+    color: white;
+    border: none;
+    font-size: 1em;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type='submit']:hover {
+    background-color: #70e000;
+}
+
+h1{
+    color: #333333;
+    font-size: 2.5em; /* Makes the text larger */
+    font-weight: bold;
+    margin-bottom: 0.5em; /* Adds some space below the heading */
+    margin-right: 1em;
+}
+
+label {
+    color: #333333;
+    font-size: 2em; /* Makes the text larger */
+    font-weight: bold;
+}
