@@ -1,3 +1,27 @@
+async function initPushData() {
+    showLoadingAlert()
+    for (const pushData of data) {
+        const quizName = pushData[0].Filename;
+        const examName = `${pushData[0].Filename}_Exam`;
+        try {
+            await fetch('/import-to-supabase', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    data: pushData,
+                    quizName: quizName,
+                    examName: examName
+                })
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    showAlert('Init Data Import Successful');
+}
+
 function showPDFData(index) {
     var pdfData = data[index];
     var container = document.getElementById('pdfDataContainer');
@@ -11,7 +35,6 @@ function showPDFData(index) {
     } else {
         quizNameInput.value = '';
     }
-
     pdfData.forEach(function (qa, index) {
         var questionDiv = document.createElement('div');
         questionDiv.classList.add('question');
@@ -265,8 +288,13 @@ function importToSupabase() {
 }
 
 function showAlert(message) {
+    document.getElementById('loadingAlert').style.display = 'none';
     document.getElementById('alertMessage').textContent = message;
     document.getElementById('customAlert').style.display = 'block';
+}
+
+function showLoadingAlert() {
+    document.getElementById('loadingAlert').style.display = 'block';
 }
 
 function closeAlert() {
@@ -275,4 +303,5 @@ function closeAlert() {
 
 window.onload = function () {
     showPDFData(currentIndex);
+    initPushData();
 };

@@ -5,15 +5,22 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pdf_viewer.css') }}">
 </head>
 <body>
-        <!-- Custom Alert Modal -->
+    <!-- Custom Alert Modal -->
     <div id="customAlert" class="custom-alert-modal" style="display:none;">
         <div class="custom-alert-content">
-        <span class="custom-alert-close" onclick="closeAlert()">❌</span>
-        <p id="alertMessage">This is a custom alert!</p>
-        <button class="custom-alert-button" onclick="closeAlert()">OK</button>
+            <span class="custom-alert-close" onclick="closeAlert()">❌</span>
+            <p id="alertMessage">This is a custom alert!</p>
+            <button class="custom-alert-button" onclick="closeAlert()">OK</button>
         </div>
     </div>
-    
+    <!-- Custom Loading Alert Modal -->
+    <div id="loadingAlert" class="custom-alert-modal" style="display:none;">
+        <div class="custom-alert-content">
+            <p style="margin-bottom: 5px;">Please wait for a while</p>
+            <p style="margin-top: 0px;">Importing Init Questions</p>
+        </div>
+    </div>
+
     <nav>
         <div class="container-nav">
             <div class="navbar-brand">📄 Edit PDFs</div>
@@ -22,7 +29,7 @@
             </div>
         </div>
     </nav>
-    
+
     <div class="container">
         <div id="pdfNameHeader" class="pdf-name-header"></div>
         <div class="header-inputs" style="margin-top: 20px;">
@@ -39,7 +46,7 @@
             <button id="importToSupabase" onclick="importToSupabase()">Import to Supabase</button>
         </div>
     </div>
-    
+
     <script>
         var currentIndex = 0;
         var data = {{ data| tojson }};
